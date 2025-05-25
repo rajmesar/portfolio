@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balachandra Raju M - Senior Data Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --midnight-blue: #191970;
+            --dark-blue: #0f0f3d;
+            --silver: #c0c0c0;
+            --light-silver: #e8e8e8;
+            --beige: #f5f5dc;
+            --cream: #faf9f6;
+            --text-dark: #2c2c2c;
+            --text-light: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--beige) 0%, var(--cream) 100%);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(25, 25, 112, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        nav a:hover {
+            background: var(--silver);
+            color: var(--midnight-blue);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--midnight-blue) 0%, var(--dark-blue) 100%);
+            color: var(--text-light);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(192, 192, 192, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .hero-content {
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--silver), var(--beige));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 10px rgba(192, 192, 192, 0.5)); }
+            to { filter: drop-shadow(0 0 20px rgba(192, 192, 192, 0.8)); }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--light-silver);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, var(--silver), var(--beige));
+            color: var(--midnight-blue);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--midnight-blue);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--midnight-blue), var(--silver));
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--midnight-blue), var(--silver));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: var(--text-light);
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            color: var(--midnight-blue);
+            margin-bottom: 1rem;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background: var(--silver);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            color: var(--midnight-blue);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: var(--midnight-blue);
+            color: var(--text-light);
+            transform: translateY(-2px);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            border-color: var(--silver);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-category h3 {
+            color: var(--midnight-blue);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, var(--midnight-blue), var(--silver));
+            color: var(--text-light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--midnight-blue), var(--silver));
+        }
+
+        .experience-item {
+            background: var(--cream);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            margin-left: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -3rem;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: var(--silver);
+            border-radius: 50%;
+            border: 4px solid var(--midnight-blue);
+        }
+
+        .experience-header {
+            margin-bottom: 1rem;
+        }
+
+        .company {
+            font-size: 1.5rem;
+            color: var(--midnight-blue);
+            font-weight: bold;
+        }
+
+        .role {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin: 0.5rem 0;
+        }
+
+        .duration {
+            color: var(--silver);
+            font-weight: 500;
+        }
+
+        .achievements {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .achievements li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .achievements li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--midnight-blue);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-top: 5px solid var(--midnight-blue);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-card h3 {
+            color: var(--midnight-blue);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .project-card p {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Awards Section */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .award-card {
+            background: linear-gradient(135deg, var(--midnight-blue), var(--silver));
+            color: var(--text-light);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .award-card:hover {
+            transform: scale(1.05);
+        }
+
+        .award-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--midnight-blue);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.2rem; }
+            .about-grid { grid-template-columns: 1fr; text-align: center; }
+            .experience-timeline { padding-left: 1rem; }
+            .experience-item { margin-left: 1rem; }
+            nav ul { flex-direction: column; gap: 1rem; }
+            section { padding: 3rem 1rem; }
+        }
+
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+
+        /* Loading animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#awards">Awards</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Balachandra Raju M</h1>
+            <p>Senior Data Engineer & Analytics Expert</p>
+            <a href="#about" class="cta-button">Explore My Work</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title fade-in">About Me</h2>
+        <div class="about-grid fade-in">
+            <div class="about-image">BR</div>
+            <div class="about-content">
+                <h3>Master of Business Analytics Graduate</h3>
+                <p>Senior Data Engineer with extensive experience in cloud migration, ETL pipeline development, and advanced analytics. Currently leading enterprise data transformations at The Hartford Insurance Group, with a proven track record of improving system performance and reducing operational costs.</p>
+                <p>Specialized in Snowflake, Azure, AWS, Python, and advanced BI solutions. Passionate about turning complex data into actionable business insights that drive strategic decision-making.</p>
+                <div class="contact-info">
+                    <a href="mailto:rajmesar03@gmail.com" class="contact-item">📧 Email</a>
+                    <a href="tel:475-243-6172" class="contact-item">📱 Phone</a>
+                    <a href="https://www.linkedin.com/in/balachandra-raju-1435b828a/" class="contact-item">💼 LinkedIn</a>
+                    <a href="https://github.com/rajmesar" class="contact-item">💻 GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title fade-in">Technical Skills</h2>
+        <div class="skills-grid fade-in">
+            <div class="skill-category">
+                <h3>Programming Languages</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">Unix Shell</span>
+                    <span class="skill-tag">HTML/CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">XML</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Databases & Cloud</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">Oracle SQL</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">Neo4j</span>
+                    <span class="skill-tag">Snowflake</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">Azure</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Analytics & BI Tools</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">SSIS/SSRS</span>
+                    <span class="skill-tag">Databricks</span>
+                    <span class="skill-tag">Data Factory</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Data Science & ML</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">Predictive Analytics</span>
+                    <span class="skill-tag">Data Mining</span>
+                    <span class="skill-tag">Statistical Analysis</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2 class="section-title fade-in">Professional Experience</h2>
+        <div class="experience-timeline fade-in">
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="company">The Hartford Insurance Group, Inc</div>
+                    <div class="role">Senior Data Engineer - Full Time</div>
+                    <div class="duration">Mar 2025 - Present</div>
+                </div>
+                <ul class="achievements">
+                    <li>Led end-to-end migration of enterprise data assets from on-prem Oracle to Snowflake via Databricks and Python, improving system scalability and reducing query latency by 40%</li>
+                    <li>Developed and optimized 100+ advanced ADL pipeline components, enhancing reporting efficiency and reducing data transformation time by 35%</li>
+                    <li>Simplified and tuned Snowflake data models handling over 1.5TB of structured and semi-structured data, increasing reporting speed by 30%</li>
+                    <li>Implemented robust data quality and governance protocols, resulting in 95% reduction in data integrity issues</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="company">Cognizant Technology Solutions</div>
+                    <div class="role">Data Analytics Engineer</div>
+                    <div class="duration">Nov 2022 - Aug 2023</div>
+                </div>
+                <ul class="achievements">
+                    <li>Analyzed and deployed over 50 end-to-end ETL pipelines using Azure Data Factory and PySpark in Databricks, improving data processing efficiency by 45%</li>
+                    <li>Planned and maintained 10+ Power BI dashboards with DAX-based KPIs, resulting in 30% improvement in decision-making speed</li>
+                    <li>Optimized SQL queries and Azure Synapse data models, reducing dashboard load times by 60%</li>
+                    <li>Led implementation of role-based security (RLS) ensuring 100% compliance with enterprise data security protocols</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="company">Empower Financial Service</div>
+                    <div class="role">Senior Power BI Developer</div>
+                    <div class="duration">Jan 2019 - Oct 2022</div>
+                </div>
+                <ul class="achievements">
+                    <li>Investigated and automated 20+ Power BI dashboards integrated with Snowflake and SQL Server, improving reporting efficiency by 40%</li>
+                    <li>Led secure data migration from on-premises to Snowflake, reducing data transfer times by 55%</li>
+                    <li>Processed and maintained 15+ SSIS packages, cutting ETL execution time by 30%</li>
+                    <li>Redesigned dimensional models resulting in 25% improvement in data accuracy for logistics performance reporting</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="company">ANZ (Australia and New Zealand Banking Group)</div>
+                    <div class="role">Business Intelligence Analyst</div>
+                    <div class="duration">Sep 2016 - Dec 2018</div>
+                </div>
+                <ul class="achievements">
+                    <li>Scheduled and visualized predictive insights in Tableau, leading to 20% improvement in resource allocation</li>
+                    <li>Translated machine learning outputs into actionable BI dashboards for strategic decision-making</li>
+                    <li>Collaborated with policymakers to integrate predictive analytics, increasing data adoption by 30%</li>
+                    <li>Leveraged SQL for data preparation, contributing to 15% boost in farmer revenue through price optimization</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title fade-in">Key Projects</h2>
+        <div class="projects-grid fade-in">
+            <div class="project-card">
+                <h3>Customer Churn Analysis</h3>
+                <p>Orchestrated data visualization to analyze churn distribution across key features, deploying findings to fix the three biggest causes of customer attrition, affecting 500+ at-risk accounts.</p>
+            </div>
+            <div class="project-card">
+                <h3>Credit Risk Analytics Dashboard</h3>
+                <p>Designed and deployed a Power BI dashboard and Random Forest model achieving 71% model accuracy, identifying strategies that led to $7.45M reduction in write-offs and improving financial outcomes by 30%.</p>
+            </div>
+            <div class="project-card">
+                <h3>Customer Segmentation & Product Recommendation</h3>
+                <p>Identified top 10 high-demand products using Apriori algorithm and clustered customers to design tailored promotions, increasing potential ROI through targeted re-engagement strategies.</p>
+            </div>
+            <div class="project-card">
+                <h3>S&P 500 Forecasting Model</h3>
+                <p>Forecasted inflation-adjusted S&P 500 trends using ARIMA and ETS models in R, achieving over 85% accuracy on test data and uncovering inflation's critical role in investment decision-making.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="awards">
+        <h2 class="section-title fade-in">Awards & Certifications</h2>
+        <div class="awards-grid fade-in">
+            <div class="award-card">
+                <div class="award-icon">🏆</div>
+                <h3>Global Leaders Fellowship Scholarship</h3>
+                <p>30% tuition coverage for academic excellence</p>
+            </div>
+            <div class="award-card">
+                <div class="award-icon">📊</div>
+                <h3>Microsoft Power BI Associate</h3>
+                <p>PL-300 Certification</p>
+            </div>
+            <div class="award-card">
+                <div class="award-icon">☁️</div>
+                <h3>AWS Data Engineer Associate</h3>
+                <p>Cloud data engineering expertise</p>
+            </div>
+            <div class="award-card">
+                <div class="award-icon">🔧</div>
+                <h3>Databricks Fundamentals</h3>
+                <p>Advanced analytics platform certification</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Balachandra Raju M. All rights reserved.</p>
+        <p>New Haven, CT | 475-243-6172 | rajmesar03@gmail.com</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navigation background change on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(25, 25, 112, 0.98)';
+            } else {
+                nav.style.background = 'rgba(25, 25, 112, 0.95)';
+            }
+        });
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.skill-tag, .contact-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1)';
+            });
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
